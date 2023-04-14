@@ -88,7 +88,7 @@
   const days = document.querySelector("#daysqr")
   const bdays = document.querySelector("#bdaysqr")
   // const top = document.querySelector("ctndwn")
-  const btm = document.querySelector("cctndwn")
+  const btm = document.getElementsByClassName("cctndwn")
   
   byy.onload = setInterval(function timer(){
     // alert('ok');
@@ -105,10 +105,22 @@
     if(x == 59 && bx == 59){
     let y = mins.innerHTML, by = bmins.innerHTML
     mins.innerHTML = y - 01, bmins.innerHTML = by - 01
-  }else if(y < 1 && by < 1){
+  }else if(mins.innerHTML < 1 && bmins.innerHTML < 1){
     mins.innerHTML = 59, bmins.innerHTML = 59
   }
-  let y = mins.innerHTML
+  
+  // for(;y < 10; ){
+  //   mins.innerHTML = "0" + y
+  //   bmins.innerHTML = "0" + by
+  // }
+  // for(;x < 10; ){
+  //   secs.innerHTML = "0" + x
+  //   bsecs.innerHTML = "0" + bx
+  // }
+  }, 1000);
+  
+  byy.onload = setInterval(() => {
+    let y = mins.innerHTML
   let by = bmins.innerHTML
   if ( y == 59 && by == 59){
     let z = hrs.innerHTML, bz = bhrs.innerHTML
@@ -127,22 +139,18 @@
     secs.innerHTML = "0" + x 
     bsecs.innerHTML = "0" + bx
   }
-  // for(;y < 10; ){
-  //   mins.innerHTML = "0" + y
-  //   bmins.innerHTML = "0" + by
-  // }
-  // for(;x < 10; ){
-  //   secs.innerHTML = "0" + x
-  //   bsecs.innerHTML = "0" + bx
-  // }
-  }, 1000);
-  
+  }, 3600000);
 
   btm.onchange =  function flip(){
-    btm.style.transform = "rotateX(-150deg)"
-    btm.style.transition = "transform 1s"
+    let flipHalf = document.createElement("div");
+    flipHalf.className = "cctndwn"
+    flipHalf.style.transform = "rotateX(-180deg)"
+    flipHalf.style.transition = "transform 1s"
+    let section = document.querySelector("cctndwn");
+
+    section.appendChild(flipHalf);
+    flipHalf.remove();
   }
-  o
   // || y < 10 || by < 10 || z < 10 || bz < 10 || a < 10 || ba < 10
   // mins.innerHTML = "0" + y
   //   bmins.innerHTML = "0" + by
